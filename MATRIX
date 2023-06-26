@@ -1,0 +1,186 @@
+#include<stdio.h>
+#include<conio.h>
+void add()
+{
+    int r,c,a[10][10],b[10][10],sum[10][10],i,j;
+    printf("\nenter the no of rows  ");
+    scanf("%d",&r);
+    printf("enter the no of columns  ");
+    scanf("%d",&c);
+
+    printf("enter the elements of 1st matrix:\n");
+    for(i=0;i<r;++i)
+    for(j=0;j<c;++j)
+        {
+            scanf("%d",&a[i][j]);
+        }
+
+    printf("enter the elements of 2st matrix:\n");
+    for(i=0;i<r;++i)
+    for(j=0;j<c;++j)
+        {
+            scanf("%d",&b[i][j]);
+
+        }
+
+    for(i=0;i<r;++i)
+    for(j=0;j<c;++j)
+        {
+            sum[i][j]=a[i][j]+b[i][j];
+        }
+
+        printf("the sum of matrices:\n");
+        for(i=0;i<r;++i)
+        for(j=0;j<c;++j)
+        {
+            printf("%d  ",sum[i][j]);
+        if(j==c-1){
+            printf("\n");
+        }
+        }
+}
+void sub()
+{
+    int r,c,a[10][10],b[10][10],sub[10][10],i,j;
+    printf("\nenter the no of rows  ");
+    scanf("%d",&r);
+    printf("enter the no of columns  ");
+    scanf("%d",&c);
+
+    printf("enter the elements of 1st matrix:\n");
+    for(i=0;i<r;++i)
+    for(j=0;j<c;++j)
+        {
+            scanf("%d",&a[i][j]);
+        }
+
+    printf("enter the elements of 2st matrix:\n");
+    for(i=0;i<r;++i)
+    for(j=0;j<c;++j)
+        {
+            scanf("%d",&b[i][j]);
+
+        }
+
+    for(i=0;i<r;++i)
+    for(j=0;j<c;++j)
+        {
+            sub[i][j]=a[i][j]-b[i][j];
+        }
+
+        printf("the sub of matrices:\n");
+        for(i=0;i<r;++i)
+        for(j=0;j<c;++j)
+        {
+            printf("%d  ",sub[i][j]);
+        if(j==c-1){
+            printf("\n");
+        }
+        }
+}
+void mul() {
+    int m, n, p, q, i, j, k;
+    int a[10][10], b[10][10], res[10][10];
+
+    printf("\nEnter the order of first matrix\n");
+    scanf("%d%d", & m, & n);
+    printf("Enter the order of second matrix\n");
+    scanf("%d%d", & p, & q);
+
+    if (n != p) {
+        printf("Matrix is incompatible for multiplication\n");
+    } else {
+        printf("Enter the elements of Matrix-A:\n");
+        for (i = 0; i < m; i++) {
+            for (j = 0; j < n; j++) {
+                scanf("%d", & a[i][j]);
+            }
+        }
+
+        printf("Enter the elements of Matrix-B:\n");
+        for (i = 0; i < p; i++) {
+            for (j = 0; j < q; j++) {
+                scanf("%d", & b[i][j]);
+            }
+        }
+
+        for (i = 0; i < m; i++) {
+            for (j = 0; j < q; j++) {
+                res[i][j] = 0;
+                for (k = 0; k < p; k++) {
+                    res[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+
+        printf("The product of the two matrices is:-\n");
+
+        for (i = 0; i < m; i++) {
+            for (j = 0; j < q; j++) {
+                printf("%d\t", res[i][j]);
+            }
+            printf("\n");
+        }
+    }
+
+
+}
+void transpose() {
+  int a[10][10], transpose[10][10], r, c;
+  printf("\nEnter rows and columns: ");
+  scanf("%d %d", &r, &c);
+
+  printf("\nEnter matrix elements:\n");
+  for (int i = 0; i < r; ++i)
+  for (int j = 0; j < c; ++j) {
+
+    scanf("%d", &a[i][j]);
+  }
+
+
+  printf("\nEntered matrix: \n");
+  for (int i = 0; i < r; ++i)
+  for (int j = 0; j < c; ++j) {
+    printf("%d  ", a[i][j]);
+    if (j == c - 1)
+    printf("\n");
+  }
+
+
+  for (int i = 0; i < r; ++i)
+  for (int j = 0; j < c; ++j) {
+    transpose[j][i] = a[i][j];
+  }
+
+
+  printf("\nTranspose of the matrix:\n");
+  for (int i = 0; i < c; ++i)
+  for (int j = 0; j < r; ++j) {
+    printf("%d  ", transpose[i][j]);
+    if (j == r - 1)
+    printf("\n");
+  }
+
+}
+
+ void main(){
+    int ch;
+    printf("enter your choice on matrix opertion:\n1.Addition of matrix\n2.Subtraction of matrix\n3.Multiplication of matrix\n4.Transpose of a matrix\n");
+    scanf("%d",&ch);
+    switch(ch){
+    case 1:printf("\nAddition of matrices:");
+ add();
+ break;
+case 2:printf("\nsubtraction of a matrices:");
+sub();
+break;
+ case 3:printf("\nMultiplication of a matrices:");
+ mul();
+ break;
+ case 4:printf("\nTranspose of a matrices:");
+ transpose();
+ break;
+ default :printf("you entered invalid choice!!!!!");
+ return 0;
+}
+}
